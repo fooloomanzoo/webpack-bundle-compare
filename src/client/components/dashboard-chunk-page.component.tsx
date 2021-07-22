@@ -6,7 +6,7 @@ import {
   getNodeModuleCount,
   getNodeModuleSize,
   getTotalModuleCount,
-  getTreeShakablePercent,
+  getTreeShakablePercent
 } from '../stat-reducers';
 import { ChangedModuleGraph } from './graphs/changed-module-graph.component';
 import { TreeShakeHint } from './hints/hints.component';
@@ -16,6 +16,8 @@ import { NodeModulePanel } from './panels/node-module-panel.component';
 import { PanelArrangement } from './panels/panel-arrangement.component';
 import { Placeholder } from './placeholder.component';
 import { formatPercent } from './util';
+
+
 
 export const DashboardChunkPage: React.FC<{
   chunk: number;
@@ -33,26 +35,14 @@ export const DashboardChunkPage: React.FC<{
           <h2>Chunk Stats</h2>
           <PanelArrangement>
             <CounterPanel
-              title="Total Size"
-              value={lastSize ? lastSize.size : 0}
-              oldValue={firstObj ? firstObj.size : 0}
-              formatter={filesize}
-            />
-            <CounterPanel
-              title="Node Modules"
+              title="Total Modules"
               value={getTotalModuleCount(last, chunk)}
               oldValue={getTotalModuleCount(first, chunk)}
             />
             <CounterPanel
-              title="Node Modules"
-              value={getTotalModuleCount(last, chunk)}
-              oldValue={getTotalModuleCount(first, chunk)}
-            />
-            <CounterPanel
-              title="Node Module Size"
-              value={getNodeModuleSize(last, chunk)}
-              oldValue={getNodeModuleSize(first, chunk)}
-              formatter={filesize}
+              title="Node Module Count"
+              value={getNodeModuleCount(last, chunk)}
+              oldValue={getNodeModuleCount(first, chunk)}
             />
             <CounterPanel
               title="Tree-Shaken Node Modules"
@@ -62,9 +52,16 @@ export const DashboardChunkPage: React.FC<{
               formatter={formatPercent}
             />
             <CounterPanel
-              title="Node Module Count"
-              value={getNodeModuleCount(last, chunk)}
-              oldValue={getNodeModuleCount(first, chunk)}
+              title="Total Size"
+              value={lastSize ? lastSize.size : 0}
+              oldValue={firstObj ? firstObj.size : 0}
+              formatter={filesize}
+            />
+            <CounterPanel
+              title="Node Module Size"
+              value={getNodeModuleSize(last, chunk)}
+              oldValue={getNodeModuleSize(first, chunk)}
+              formatter={filesize}
             />
           </PanelArrangement>
 

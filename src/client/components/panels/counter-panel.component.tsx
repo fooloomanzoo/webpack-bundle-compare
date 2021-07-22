@@ -56,5 +56,5 @@ const getColor = (newValue: number, oldValue?: number, moreIsBetter?: boolean) =
     return color.yellow;
   }
 
-  return color.pink;
+  return color.highlight;
 };

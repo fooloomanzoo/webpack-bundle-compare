@@ -4,21 +4,21 @@
   :global {
     .react-tabs__tab-list {
       display: flex;
-      padding: 8px;
+      padding: 0.5em;
       background: rgba(#000, 0.2);
     }
 
     .react-tabs__tab {
       list-style-type: none;
-      padding: 8px 32px;
-      border-radius: 3px;
+      padding: 0.5em 2em;
+      border-radius: 0.25em;
       cursor: pointer;
       text-transform: uppercase;
       font-family: var(--font-family-mono);
       font-size: 0.8em;
 
       &--selected {
-        background: $color-pink;
+        background: $highlight-color;
         color: $color-dark;
       }
     }

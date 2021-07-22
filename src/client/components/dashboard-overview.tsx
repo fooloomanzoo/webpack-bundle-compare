@@ -8,20 +8,25 @@ import {
   getNodeModuleSize,
   getTotalChunkSize,
   getTotalModuleCount,
-  getTreeShakablePercent,
+  getTreeShakablePercent
 } from '../stat-reducers';
 import { ChunkGraph } from './graphs/chunk-graph.component';
 import {
   AverageChunkSize,
   TotalModules,
   TreeShakeHint,
-  WhatIsAnEntrypoint,
+  WhatIsAnEntrypoint
 } from './hints/hints.component';
 import { ModuleTable } from './module-table.component';
 import { OverviewSuggestions } from './overview-suggestions';
 import { CounterPanel } from './panels/counter-panel.component';
 import { PanelArrangement } from './panels/panel-arrangement.component';
-import { formatDuration, formatPercent } from './util';
+import {
+  formatDuration,
+  formatPercent
+} from './util';
+
+
 
 export const DashboardOverview: React.FC<{
   first: StatsCompilation;
@@ -31,22 +36,23 @@ export const DashboardOverview: React.FC<{
     <>
       <div className="row" style={{ padding: 1 }}>
         <div className="col-xs-12 col-sm-6">
-          <h2>Suggestions</h2>
+          <h2>Informations</h2>
           <OverviewSuggestions first={first} last={last} />
 
           <h2 style={{ marginTop: 64 }}>Stats</h2>
           <PanelArrangement>
             <CounterPanel
+              title="Entrypoint Size"
+              hint={WhatIsAnEntrypoint}
+              value={getEntryChunkSize(last)}
+              oldValue={getEntryChunkSize(first)}
+              formatter={filesize}
+            />
+            <CounterPanel
               title="Total Size"
               value={getTotalChunkSize(last)}
               oldValue={getTotalChunkSize(first)}
               formatter={filesize}
-            />
-            <CounterPanel
-              title="Download Time (3 Mbps)"
-              value={(getTotalChunkSize(last) / (3500 * 128)) * 1000}
-              oldValue={(getTotalChunkSize(first) / (3500 * 128)) * 1000}
-              formatter={formatDuration}
             />
             <CounterPanel
               title="Avg. Chunk Size"
@@ -56,23 +62,15 @@ export const DashboardOverview: React.FC<{
               formatter={filesize}
             />
             <CounterPanel
-              title="Entrypoint Size"
-              hint={WhatIsAnEntrypoint}
-              value={getEntryChunkSize(last)}
-              oldValue={getEntryChunkSize(first)}
-              formatter={filesize}
-            />
-            <CounterPanel
               title="Total Modules"
               hint={TotalModules}
               value={getTotalModuleCount(last)}
               oldValue={getTotalModuleCount(first)}
             />
             <CounterPanel
-              title="Node Module Size"
-              value={getNodeModuleSize(last)}
-              oldValue={getNodeModuleSize(first)}
-              formatter={filesize}
+              title="Node Module Count"
+              value={getNodeModuleCount(last)}
+              oldValue={getNodeModuleCount(first)}
             />
             <CounterPanel
               title="Tree-Shaken Node Modules"
@@ -82,9 +80,16 @@ export const DashboardOverview: React.FC<{
               formatter={formatPercent}
             />
             <CounterPanel
-              title="Node Module Count"
-              value={getNodeModuleCount(last)}
-              oldValue={getNodeModuleCount(first)}
+              title="Node Module Size"
+              value={getNodeModuleSize(last)}
+              oldValue={getNodeModuleSize(first)}
+              formatter={filesize}
+            />
+            <CounterPanel
+              title="Download Time (3 Mbps)"
+              value={(getTotalChunkSize(last) / (3500 * 128)) * 1000}
+              oldValue={(getTotalChunkSize(first) / (3500 * 128)) * 1000}
+              formatter={formatDuration}
             />
             <CounterPanel
               title="Build Time"

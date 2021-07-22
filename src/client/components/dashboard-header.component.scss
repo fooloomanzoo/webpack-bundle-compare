@@ -2,19 +2,19 @@
 
 .item {
   font-weight: bold;
-  color: rgba(#fff, 0.8);
+  color: var(--text-secondary);
   text-decoration: none;
   line-height: 40px;
   display: flex;
   align-items: center;
 
   + .item {
-    margin-left: 32px;
+    margin-left: 2em;
   }
 }
 
 a.item:hover {
-  color: #fff;
+  color: var(--text-color);
 }
 
 .icon {

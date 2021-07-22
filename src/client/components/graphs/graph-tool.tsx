@@ -6,11 +6,13 @@ import {
   getReasons,
   IWebpackModuleComparisonOutput,
   normalizeName,
-  replaceLoaderInIdentifier,
+  replaceLoaderInIdentifier
 } from '../../stat-reducers';
 import { IndefiniteProgressBar } from '../progress-bar.component';
 import { formatPercentageDifference } from '../util';
 import BaseGraph from './base-graph.component';
+
+
 
 export const filterUnattachedEdges = (
   nodes: cytoscape.NodeDefinition[],
@@ -123,8 +125,8 @@ export const expandModuleComparison = (
   comparisons: { [name: string]: IWebpackModuleComparisonOutput },
   roots: IWebpackModuleComparisonOutput[],
 ) => {
-  const maxBubbleArea = 150;
-  const minBubbleArea = 30;
+  const maxBubbleArea = 100;
+  const minBubbleArea = 20;
   const allComparisons = Object.values(comparisons);
   const maxSize = allComparisons.reduce((max, cmp) => Math.max(max, cmp.toSize), 0);
   const entries: string[] = [];
@@ -158,10 +160,10 @@ export const expandModuleComparison = (
       const area = Math.max(minBubbleArea, maxBubbleArea * weight);
 
       return fileSizeNode({
-        id,
-        label: replaceLoaderInIdentifier(node.name),
         area,
         fromSize: node.fromSize,
+        id,
+        label: replaceLoaderInIdentifier(node.name),
         toSize: node.toSize,
       });
     },

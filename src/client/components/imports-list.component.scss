@@ -3,14 +3,24 @@
   font-family: var(--font-family-mono);
 
   + .importBox {
-    margin-top: 32px;
+    margin-top: 2em;
   }
 }
 
 .identifier {
   font-size: 0.9em;
-  padding: 8px;
-  border-bottom: 1px solid rgba(#fff, 0.1);
+  padding: 0.5em;
+  
+  :after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    right: 0;
+    height: 0.1em;
+    background-color: currentColor;
+    opacity: 0.2;
+  }
 }
 
 .title {
@@ -24,7 +34,7 @@
 }
 
 .reason {
-  padding: 12px 8px;
+  padding: 12px 0.5em;
 
   &:nth-child(odd) {
     background-color: rgba(#fff, 0.05);
@@ -38,13 +48,13 @@
     display: inline-block;
     text-align: right;
     margin-right: 1em;
-    color: rgba(#fff, 0.5);
+    color: var(--text-secondary);
     font-style: normal;
   }
 }
 
 .issuer {
-  margin-top: 8px;
+  margin-top: 0.5em;
 
   li {
     list-style-type: none;

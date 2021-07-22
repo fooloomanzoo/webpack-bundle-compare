@@ -22,7 +22,7 @@ export const BooleanPanel: React.FC<IProps> = ({
   <BasePanel
     title={title}
     hint={hint}
-    color={!!value === goodValue ? color.blue : color.pink}
+    color={!!value === goodValue ? color.blue : color.highlight}
     value={formatter(value)}
   />
 );

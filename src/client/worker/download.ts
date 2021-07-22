@@ -1,10 +1,18 @@
 import { decode } from 'msgpack-lite';
 import { inflate } from 'pako';
-import { from, Observable } from 'rxjs';
+import {
+  from,
+  Observable
+} from 'rxjs';
 import { StatsCompilation } from 'webpack';
-import { CompareAction, doAnalysis, ILoadableResource } from '../redux/actions';
+import {
+  CompareAction,
+  doAnalysis,
+  ILoadableResource
+} from '../redux/actions';
 import { ErrorCode } from '../redux/reducer';
 import { Semaphore } from './semaphore';
+
 
 const downloadSemaphore = new Semaphore(1);
 

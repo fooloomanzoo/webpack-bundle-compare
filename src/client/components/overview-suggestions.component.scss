@@ -3,18 +3,18 @@
 .tip {
   font-size: 1.1em;
   line-height: 1.5em;
-  padding-left: 32px;
+  padding-left: 2em;
   position: relative;
   padding-top: 1em;
 
   + .tip {
     margin-top: 1em;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.1em solid var(--background-secondary);
   }
 
   small {
     font-size: 0.7em;
-    color: rgba(#fff, 0.7);
+    color: var(--text-secondary);
     display: block;
     font-size: 0.9em;
   }

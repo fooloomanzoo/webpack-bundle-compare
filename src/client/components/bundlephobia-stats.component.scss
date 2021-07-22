@@ -1,9 +1,9 @@
 .wrapper {
   font-size: 0.9em;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
 
   :global .row {
-    margin-top: 16px;
+    margin-top: 1em;
   }
 
   p {
@@ -13,7 +13,7 @@
 
 .icons {
   text-align: center;
-  margin-top: 16px;
+  margin-top: 1em;
   font-size: 2.5em;
 
   a {

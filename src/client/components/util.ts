@@ -1,6 +1,7 @@
 import { Base64 } from 'js-base64';
 import styles from './util.component.scss';
 
+
 export const classes = (...classList: Array<string | null | undefined>) => {
   let str = '';
   for (const cls of classList) {
@@ -15,13 +16,14 @@ export const classes = (...classList: Array<string | null | undefined>) => {
 export const color = {
   dark: styles.colorDark,
   medium: styles.colorMedium,
-  pink: styles.colorPink,
+  highlight: styles.colorPink,
   yellow: styles.colorYellow,
   blue: styles.colorBlue,
 };
 
 export const defaultFormatter = new Intl.NumberFormat();
 export const percentageFormatter = new Intl.NumberFormat(undefined, {
+  style: 'percent',
   maximumSignificantDigits: 3,
 });
 
@@ -46,7 +48,7 @@ export const formatDifference = (
  * Formats a percentage (0-1).
  */
 export const formatPercent = (percent: number) =>
-  `${percentageFormatter.format(Math.abs(percent * 100))}%`;
+  `${percentageFormatter.format(percent)}`;
 
 /**
  * Formats the difference between two file sizes.
@@ -55,9 +57,12 @@ export const formatPercentageDifference = (a: number, b: number) => {
   if (a === b) {
     return '+0%';
   }
+  if (!a) {
+    return 'new';
+  }
 
   const delta = b / a - 1;
-  return `${delta < 0 ? '-' : '+'}${formatPercent(Math.abs(delta))}`;
+  return formatPercent(delta);
 };
 
 /**

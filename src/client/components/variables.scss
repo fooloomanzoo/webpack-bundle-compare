@@ -1,10 +1,10 @@
 $color-dark: #1c0658;
-$color-medium: #5c2686;
-$color-pink: #ff1690;
-$color-yellow: #f4d676;
-$color-blue: #36cdc4;
+$color-medium: rgb(92, 38, 134);
+$highlight-color: #CD43FF;
+$color-yellow: #E6D113;
+$color-blue: #0336DE;
 
-@mixin gradient-border($gradient, $background, $width: 1px) {
+@mixin gradient-border($gradient, $background, $width: 0.1em) {
   background: $gradient;
 
   &::before {

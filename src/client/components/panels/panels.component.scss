@@ -1,33 +1,33 @@
 @import '../variables.scss';
 
 .panel {
-  color: rgba(#fff, 0.4);
-  background: rgba(#000, 0.1);
-  padding: 8px;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  padding: 0.5em;
   position: relative;
 
   + .panel {
-    margin-top: 16px;
+    margin-top: 1em;
   }
 
   &.clickable {
     cursor: pointer;
 
     &:hover {
-      background: rgba(#fff, 0.1);
+      background: var(--background-primary);
     }
   }
 }
 
 .hint {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 24px;
+  top: 0.5em;
+  right: 0.5em;
+  font-size: 2em;
 }
 
 .title {
-  color: #fff;
+  color: var(--text-color);
   display: block;
   text-transform: uppercase;
   font-family: var(--font-family-mono);
@@ -38,8 +38,8 @@
 .delta {
   display: block;
   font-weight: 200;
-  font-size: 20px;
-  margin-top: 8px;
+  font-size: 1.5em;
+  margin-top: 0.5em;
 }
 
 .delta {
@@ -54,14 +54,14 @@
 .arrangement {
   display: flex;
   flex-wrap: wrap;
-  margin: -1rem -0.5rem;
+  margin: -1em -0.5em;
 
   .panel {
     flex-basis: 100%;
-    margin: 1rem 0.5rem;
+    margin: 1em 0.5em;
 
     @media only screen and (min-width: 48em) {
-      flex-basis: calc(33% - 1rem);
+      flex-basis: calc(33% - 1em);
     }
   }
 }
@@ -69,8 +69,8 @@
 .arrow {
   border: 0.5em solid transparent;
   border-bottom-color: currentColor;
-  width: 1px;
-  height: 1px;
+  width: 0.1em;
+  height: 0.1em;
   transform: scaleX(0.5) translateY(33%) rotate(180deg);
   display: inline-block;
 
@@ -82,10 +82,10 @@
 .moduleType {
   font-size: 0.7em;
   color: $color-dark;
-  border-radius: 3px;
+  border-radius: 0.25em;
   display: flex;
   align-items: center;
-  padding: 4px;
+  padding: 0.25em;
 
   svg {
     font-size: 1.5em;
@@ -96,7 +96,7 @@
   }
 
   &.cjs {
-    background: $color-pink;
+    background: $highlight-color;
   }
 
   &.mixed {

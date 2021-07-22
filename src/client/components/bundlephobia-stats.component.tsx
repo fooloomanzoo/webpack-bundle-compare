@@ -1,20 +1,32 @@
-import { Retrieval, RetrievalState, shouldAttempt } from '@mixer/retrieval';
+import {
+  Retrieval,
+  RetrievalState,
+  shouldAttempt
+} from '@mixer/retrieval';
 import * as filesize from 'filesize';
 import * as React from 'react';
-import { IoLogoGithub, IoLogoNpm } from 'react-icons/io';
 import { connect } from 'react-redux';
 import { fetchBundlephobiaData } from '../redux/actions';
-import { getBundlephobiaData, IAppState } from '../redux/reducer';
+import {
+  getBundlephobiaData,
+  IAppState
+} from '../redux/reducer';
 import { IBundlephobiaStats } from '../redux/services/bundlephobia-api';
 import styles from './bundlephobia-stats.component.scss';
 import { Errors } from './errors.component';
-import { SideEffectHint, TreeShakeHint } from './hints/hints.component';
+import {
+  SideEffectHint,
+  TreeShakeHint
+} from './hints/hints.component';
 import { BasePanel } from './panels/base-panel.component';
 import { BooleanPanel } from './panels/boolean-panel.component';
 import { CounterPanel } from './panels/counter-panel.component';
 import { Placeholder } from './placeholder.component';
 import { IndefiniteProgressBar } from './progress-bar.component';
 import { color } from './util';
+
+
+
 
 interface IProps {
   name: string;
@@ -104,16 +116,6 @@ class BundlephobiaStatsComponent extends React.PureComponent<IProps> {
                   hint={SideEffectHint}
                 />
               </div>
-            </div>
-            <div className={styles.icons}>
-              {stats.value.repository && (
-                <a href={stats.value.repository} target="_blank">
-                  <IoLogoGithub />
-                </a>
-              )}
-              <a href={`https://www.npmjs.com/package/${this.props.name}`} target="_blank">
-                <IoLogoNpm />
-              </a>
             </div>
           </div>
         );

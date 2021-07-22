@@ -34,11 +34,11 @@
   position: relative;
   z-index: 1;
   max-width: 640px;
-  margin: 50px;
-  padding: 50px;
-  border-radius: 4px;
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
-  background: linear-gradient($color-medium, $color-dark);
+  margin: 3em;
+  padding: 3em;
+  border-radius: 0.25em;
+  box-shadow: 0 0.75em 3em rgba(0, 0, 0, 0.3);
+  background: var(--app-background);
 
   h2:first-child {
     margin-top: 0;
@@ -53,15 +53,15 @@
   }
 
   h3 {
-    margin: 32px 0 16px;
+    margin: 2em 0 1em;
   }
 
   li {
-    margin-left: 20px;
+    margin-left: 1.5em;
     line-height: 1.7em;
 
     + li {
-      margin-top: 4px;
+      margin-top: 0.25em;
     }
   }
 

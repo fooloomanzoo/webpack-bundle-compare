@@ -1,8 +1,13 @@
 import * as cytoscape from 'cytoscape';
 import * as React from 'react';
-import { IoIosContract, IoIosExpand } from 'react-icons/io';
+import {
+  IoIosContract,
+  IoIosExpand
+} from 'react-icons/io';
 import styles from './base-graph.component.scss';
 import { filterUnattachedEdges } from './graph-tool';
+
+
 
 // tslint:disable-next-line
 cytoscape.use(require('cytoscape-fcose'));
@@ -19,7 +24,7 @@ interface IProps {
 const enum FilterState {
   NoFilter,
   DidFilter,
-  RemovedFiler,
+  emovedFiler,
 }
 
 const nodeHideThreshold = 100;
@@ -87,7 +92,7 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
 
   private draw(container: HTMLDivElement, filter: FilterState = this.state.filter) {
     let { nodes, edges } = this.props;
-    if (nodes.length > nodeHideThreshold && filter !== FilterState.RemovedFiler) {
+    if (nodes.length > nodeHideThreshold && filter !== FilterState.emovedFiler) {
       nodes = nodes.slice(0, nodeHideThreshold);
       edges = filterUnattachedEdges(nodes, edges);
       this.setState({ filter: FilterState.DidFilter });
@@ -102,7 +107,7 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
       boxSelectionEnabled: false,
       autounselectify: true,
       userZoomingEnabled: false,
-      layout: { name: 'fcose', animate: false, nodeSeparation: 150, quality: 'proof' } as any,
+      layout: { name: 'fcose', animate: false, sampleSize: 75, nodeSeparation: 150, quality: 'proof', padding: 16, piTol: 0.01 } as any,
       elements: { nodes, edges },
       style: [
         {
@@ -112,7 +117,8 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
             width: 'data(width)',
             height: 'data(width)',
             color: 'data(fontColor)',
-            'font-size': 5,
+            'font-size': 3,
+            'font-family': 'sans-serif',
             'background-color': 'data(bgColor)',
           },
         },
@@ -120,16 +126,16 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
           selector: 'node.hover',
           style: {
             label: 'data(label)',
-            'background-color': '#fff',
+            'background-color': '#3f61cf',
           },
         },
         {
           selector: 'edge',
           style: {
-            width: 1.5,
-            'line-color': '#5c2686',
-            'arrow-scale': 0.3,
-            'source-arrow-color': '#5c2686',
+            width: 0.2,
+            'line-color': '#fff',
+            'arrow-scale': 0.2,
+            'source-arrow-color': '#fff',
             'source-arrow-shape': 'triangle',
             'curve-style': 'bezier',
           } as any,
@@ -137,14 +143,15 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
         {
           selector: 'edge.highlighted',
           style: {
-            'line-color': '#fff',
-            'source-arrow-color': '#fff',
+            'line-color': '#3f61cf',
+            'source-arrow-color': '#3f61cf',
           },
         },
         {
           selector: 'node.highlighted',
           style: {
             label: 'data(label)',
+            'background-color': '#3f61cf',
           },
         },
       ],
@@ -210,7 +217,7 @@ export default class BaseGraph extends React.PureComponent<IProps, { filter: Fil
 
   private readonly unfilter = () => {
     if (this.container.current) {
-      this.draw(this.container.current, FilterState.RemovedFiler);
+      this.draw(this.container.current, FilterState.emovedFiler);
       this.setState({ filter: FilterState.NoFilter });
     }
   };

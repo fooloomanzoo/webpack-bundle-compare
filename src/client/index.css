@@ -1,8 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,500|IBM+Plex+Sans:300,400,600&display=swap');
-
 :root {
-  --font-family-mono: 'IBM Plex Mono', monospace;
-  --font-family-body: 'IBM Plex Sans', sans-serif;
+  --font-family-mono: monospace;
+  --font-family-body: sans-serif;
+  --primary-color: #3f61cf;
+  --secondary-color: #ec9155;
+
+
+  --error-color: #D44936;
+  --warning-color: #E6D113;
+  --highlight-color: #CD43FF;
+
+  --app-background: linear-gradient(var(--primary-color), var(--secondary-color)); 
+
+  --text-color:  rgb(248, 248, 248); 
+  --text-secondary: rgba(255,255,255,0.7); 
+  --background-color:  rgba(0, 0, 0, 0.6); 
+  --background-primary: rgba(0, 0, 0, 0.3); 
+  --background-secondary: rgba(255, 255, 255, 0.15); 
+}
+
+@media (prefers-color-scheme: light) {
+  :root { 
+    --app-background: linear-gradient(#7786db, #e2ab57); 
+    --text-color:  rgb(12, 12, 12); 
+    --text-secondary:  rgba(0, 0, 0, 0.7);
+    --background-color: rgba(255, 255, 255, 0.5); 
+    --background-primary: rgba(255, 255, 255, 0.3); 
+    --background-secondary: rgba(0, 0, 0, 0.2); 
+  }
 }
 
 * {
@@ -12,11 +36,12 @@
 }
 
 body {
-  background: linear-gradient(#5c2686, #1c0658);
+  background: var(--app-background);
+  color: var(--text-color);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-body);
-  color: #fff;
+  font-size: calc(0.7em + 0.7vmin);
 }
 
 pre,
@@ -30,36 +55,63 @@ h3 {
   font-weight: 300;
 }
 
+button {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  
+  white-space: nowrap;
+  height: 2.5em;
+  padding: 0 1em;
+  line-height: 1;
+  
+  transition-timing-function: ease;
+  transition-duration: 0.2s;
+  transition-property: background-color, color, border-color, opacity;
+  
+  appearance: none;
+  outline: none;
+}
+
 textarea,
 input {
   display: block;
   width: 100%;
-  padding: 8px;
+  padding: 1em;
   background: none;
-  border: 2px solid #5c2686;
-  border-radius: 5px;
-  color: #fff;
+  border: medium solid var(--secondary-color);
+  border-radius: 0.75em;
+  color: var(--text-primary);
   font-family: var(--font-family-mono);
+  font-size: 0.8em;
   line-height: 1.5em;
   outline: 0 !important;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--background-primary);
+
+  transition-timing-function: ease;
+  transition-duration: 0.2s;
+  transition-property: background-color, color, border-color, opacity;
 }
 
 textarea:focus {
-  border-color: #ff1690;
+  border-color: var(--highlight-color);
 }
 
 h2 {
-  margin: 32px 0 16px;
+  margin: 2em 0 1em;
 }
 
-h2 small {
-  display: block;
-  font-size: 0.6em;
-  margin-top: 0.5em;
+small {
+  font-size: 0.75em;
+  margin: 0.5em 0;
 }
 
 a {
-  color: #36cdc4;
+  color: var(--primary-color);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

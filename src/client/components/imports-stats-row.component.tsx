@@ -27,7 +27,7 @@ export const ImportsStatsRow: React.FC<{
       hint={UniqueEntrypoints}
       value={newTargets.length}
       oldValue={oldTargets.length}
-      color={newTargets.length > 0 ? color.pink : undefined}
+      color={newTargets.length > 0 ? color.highlight : undefined}
     />
     <CounterPanel
       title="Dependent Modules"

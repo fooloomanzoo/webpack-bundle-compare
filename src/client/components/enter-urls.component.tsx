@@ -1,20 +1,29 @@
-import { IRetrievalError, RetrievalState } from '@mixer/retrieval';
+import {
+  IRetrievalError,
+  RetrievalState
+} from '@mixer/retrieval';
 import * as React from 'react';
-import GithubCorner from 'react-github-corner';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { clearLoadedBundles, ILoadableResource, loadAllUrls } from '../redux/actions';
+import {
+  clearLoadedBundles,
+  ILoadableResource,
+  loadAllUrls
+} from '../redux/actions';
 import {
   BundleStateMap,
   getBundleErrors,
   getBundleUrls,
   getGroupedBundleState,
-  IAppState,
+  IAppState
 } from '../redux/reducer';
 import { Button } from './button.component';
 import styles from './enter-urls.component.scss';
 import { Errors } from './errors.component';
 import { ProgressBar } from './progress-bar.component';
+
+
+
 
 interface IProps {
   defaultUrls: string[];
@@ -78,7 +87,7 @@ class EnterUrlsComponent extends React.PureComponent<IProps, IState> {
               Load URLs
             </Button>
             <div className={styles.upload}>
-              <input type="file" multiple onChange={this.loadFiles} />
+              <input type="file" multiple onChange={this.loadFiles} hidden />
               <Button onClick={this.load} variant="blue">
                 Upload
               </Button>
@@ -89,13 +98,10 @@ class EnterUrlsComponent extends React.PureComponent<IProps, IState> {
     }
 
     return (
-      <>
-        <GithubCorner href="https://github.com/mixer/webpack-bundle-compare" />
         <div className={styles.entry}>
           <h1>Webpack Bundle Comparsion</h1>
           {contents}
         </div>
-      </>
     );
   }
 

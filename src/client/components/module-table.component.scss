@@ -2,61 +2,56 @@
 
 .plot {
   border: none !important;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
 }
 
 .plot :global {
+  [role="columnheader"],
   .public_fixedDataTable_header,
   .public_fixedDataTable_hasBottomBorder {
-    border-color: rgba(#000, 0.1);
+    background: var(--background-primary);
   }
 
   .public_fixedDataTable_scrollbarSpacer {
-    background: rgba(#000, 0.1);
-  }
-
-  .public_fixedDataTable_header,
-  .public_fixedDataTable_header .public_fixedDataTableCell_main {
-    background: none;
+    background: var(--background-primary);
   }
 
   .public_fixedDataTable_footer .public_fixedDataTableCell_main {
-    background: #f6f7f8;
-    border-color: rgba(#000, 0.1);
+    background: var(--highlight-color);
+    border-color: var(--background-secondary);
   }
 
   .public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal,
   .public_fixedDataTableRow_main {
-    background-color: rgba(#000, 0.1);
+    background: var(--background-primary);
   }
 
   .public_fixedDataTableRow_main {
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(#fff, 0.05);
+      background: var(--background-primary);
     }
   }
 
   .public_fixedDataTableCell_main {
-    background: none;
-    border-color: rgba(#000, 0.3);
+    background: var(--background-primary);
   }
 
   .public_fixedDataTableCell_highlighted,
   .public_fixedDataTableRow_highlighted,
   .public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
-    background: none;
+    background: var(--background-color);
   }
 
   .public_fixedDataTableCell_cellContent {
-    padding: 12px;
-    font-size: 0.8em;
+    padding: 0.7em;
+    font-size: 0.7em;
   }
 
   .public_fixedDataTable_header .public_fixedDataTableCell_main {
     font-family: var(--font-family-mono);
-    color: #fff;
+    color: var(--text-color);
     text-transform: uppercase;
     font-weight: normal;
   }
@@ -65,14 +60,14 @@
   .public_Scrollbar_mainOpaque:hover,
   .public_Scrollbar_faceActive:after {
     border: none;
-    background: rgba(#000, 0.1);
+    background: var(--background-primary);
   }
 
   .public_Scrollbar_face:after {
-    background: rgba(#fff, 0.3);
+    background: var(--background-secondary);
   }
 }
 
 .muted {
-  color: rgba(#fff, 0.3);
+  color: var(--text-secondary);
 }
